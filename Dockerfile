@@ -1,5 +1,5 @@
 FROM osrf/ros:melodic-desktop-full
-LABEL maintainer="Kin Zhang <kin_eng@163.com>"
+LABEL maintainer="Zhuang Chi Sheng <chngdickson@gmail.com>"
 
 # Just in case we need it
 ENV DEBIAN_FRONTEND noninteractive
@@ -24,6 +24,6 @@ RUN catkin config --extend /opt/ros/melodic
 RUN catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release
 RUN catkin config --merge-devel
 WORKDIR /root/catkin_ws/src/
-RUN git clone https://github.com/Kin-Zhang/voxblox.git
+RUN git clone https://github.com/chngdickson/voxblox.git
 RUN wstool init . ./voxblox/voxblox_https.rosinstall
 RUN wstool update
