@@ -259,6 +259,7 @@ class TsdfServer {
   // Last message times for throttling input.
   ros::Time last_msg_time_ptcloud_;
   ros::Time last_msg_time_freespace_ptcloud_;
+  ros::Time prev_last_msg_time_freespace_ptcloud_;
 
   /// Current transform corrections from ICP.
   Transformation icp_corrected_transform_;
