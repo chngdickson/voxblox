@@ -29,7 +29,7 @@ home/bags/
 ```bash
 cd && docker run -it --net=host --gpus all --name voxblox_ros -v /home/ds1804/bags:/root/bags chngdickson/voxblox_ros /bin/zsh 
 ```
-docker run -it --net=host --gpus all --name voxblox_ros -v /home/kin/bags:/home/kin/bags zhangkin/voxblox_ros /bin/zsh 
+
 
 ## RUN
 after the link folder, you can directly build and run the launch
