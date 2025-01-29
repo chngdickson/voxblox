@@ -146,6 +146,12 @@ TsdfServer::TsdfServer(const ros::NodeHandle& nh,
         nh_private_.createTimer(ros::Duration(publish_map_every_n_sec),
                                 &TsdfServer::publishMapEvent, this);
   }
+  
+  if (update_mesh_every_n_sec > 0.0){
+    save_mesh_timer_ = 
+        nh_private_.createTimer(ros::Duration(update_mesh_every_n_sec*5),
+                                &TsdfServer::saveMeshEvent, this);
+  }
 }
 
 void TsdfServer::getServerConfigFromRosParam(
@@ -624,6 +630,14 @@ void TsdfServer::updateMeshEvent(const ros::TimerEvent& /*event*/) {
 
 void TsdfServer::publishMapEvent(const ros::TimerEvent& /*event*/) {
   publishMap();
+}
+void TsdfServer::saveMeshEvent(const ros::TimerEvent&){
+  if (points_C.size() == prev_cloud_size_){
+    generateMesh();
+  }
+  else{
+    prev_cloud_size_ = points_C.size()
+  }
 }
 
 void TsdfServer::clear() {

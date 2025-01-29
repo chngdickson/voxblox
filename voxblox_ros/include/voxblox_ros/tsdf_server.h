@@ -95,6 +95,7 @@ class TsdfServer {
 
   void updateMeshEvent(const ros::TimerEvent& event);
   void publishMapEvent(const ros::TimerEvent& event);
+  void saveMeshEvent(const ros::TimerEvent& event);
 
   std::shared_ptr<TsdfMap> getTsdfMapPtr() { return tsdf_map_; }
   std::shared_ptr<const TsdfMap> getTsdfMapPtr() const { return tsdf_map_; }
@@ -163,6 +164,7 @@ class TsdfServer {
   // Timers.
   ros::Timer update_mesh_timer_;
   ros::Timer publish_map_timer_;
+  ros::Timer save_mesh_timer_;
 
   bool verbose_;
 
@@ -227,6 +229,7 @@ class TsdfServer {
   /// Subscriber settings.
   int pointcloud_queue_size_;
   int num_subscribers_tsdf_map_;
+  int prev_cloud_size_;
 
   // Maps and integrators.
   std::shared_ptr<TsdfMap> tsdf_map_;
