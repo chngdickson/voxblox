@@ -638,7 +638,7 @@ void TsdfServer::saveMeshEvent(const ros::TimerEvent&){
     generateMesh();
   }
   else{
-    prev_last_msg_time_freespace_ptcloud_ = last_msg_time_freespace_ptcloud_
+    prev_last_msg_time_freespace_ptcloud_ = last_msg_time_freespace_ptcloud_;
   }
 }
 
