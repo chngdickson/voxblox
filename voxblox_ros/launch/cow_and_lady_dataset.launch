@@ -22,7 +22,7 @@
     <param name="verbose" value="true" />
     <remap from="transform" to="/kinect/vrpn_client/estimated_transform" />
     <rosparam file="$(find voxblox_ros)/cfg/cow_and_lady.yaml"/>
-    <param name="mesh_filename" value="$(ply_save_file)" />
+    <param name="mesh_filename" value="$(arg ply_save_file)" />
   </node>
 
 </launch>
