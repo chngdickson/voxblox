@@ -631,13 +631,14 @@ void TsdfServer::updateMeshEvent(const ros::TimerEvent& /*event*/) {
 void TsdfServer::publishMapEvent(const ros::TimerEvent& /*event*/) {
   publishMap();
 }
+
 void TsdfServer::saveMeshEvent(const ros::TimerEvent&){
   if (tsdf_map_->getTsdfLayer().getMemorySize() == prev_cloud_size_){
-    ROS_INFO_ONCE("there has been no update for 5 seconds, generating mesh");
+    ROS_INFO("there has been no update for 5 seconds, generating mesh");
     generateMesh();
   }
   else{
-    prev_cloud_size_ = tsdf_map_->getTsdfLayer().getMemorySize()
+    prev_cloud_size_ = tsdf_map_->getTsdfLayer().getMemorySize();
   }
 }
 
