@@ -421,6 +421,7 @@ void TsdfServer::publishAllUpdatedTsdfVoxels() {
 
   pointcloud.header.frame_id = world_frame_;
   tsdf_pointcloud_pub_.publish(pointcloud);
+  
 }
 
 void TsdfServer::publishTsdfSurfacePoints() {

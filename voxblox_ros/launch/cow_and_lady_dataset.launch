@@ -1,7 +1,7 @@
 <launch>
   <arg name="play_bag" default="true" />
   <arg name="bag_file" default="/root/bags/cow_eth_data/data.bag"/>
-  <arg name="voxel_size" default="0.05"/>
+  <arg name="voxel_size" default="0.01"/>
   <arg name="ply_save_file" default="/root/bags/cow_eth_data/output.ply"/>
 
   <!-- Download the dataset here: https://projects.asl.ethz.ch/datasets/doku.php?id=iros2017 -->
