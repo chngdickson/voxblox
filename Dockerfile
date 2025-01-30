@@ -63,7 +63,7 @@ RUN apt-get install -y libgflags-dev libgoogle-glog-dev protobuf-compiler libpro
 
 # 2c) Build Third Party OV2Slam
 WORKDIR /root/catkin_ws/src/
-RUN git clone https://github.com/ov2slam/ov2slam.git
+RUN git clone https://github.com/chngdickson/ov2slam.git
 WORKDIR /root/catkin_ws/src/ov2slam
 RUN chmod +x build_thirdparty.sh
 RUN ./build_thirdparty.sh
@@ -77,5 +77,6 @@ WORKDIR /root/catkin_ws
 RUN catkin build
 
 # 4) Source and set default workDir
-RUN /bin/bash -c 'source /root/catkin_ws/devel/setup.bash'
+RUN echo "source /root/catkin_ws/devel/setup.bash" >> /etc/bash.bashrc
 WORKDIR /root/catkin_ws/src/
+ENTRYPOINT ["/bin/bash"]
