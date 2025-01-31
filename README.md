@@ -26,8 +26,10 @@ home/bags/
 │   └── voxblox_cow_extras.zip
 ```
 
-/root/bags is folder in docker
-/home/ds1804/bags is the folder in linux pc
+- /root/bags   -> is folder in docker, this should remain unchanged
+- /home/ds1804/bags -> is the folder in my linux pc
+- c:\Users\swacker\MINT -> Folder in windows pc
+
 ```bash
 cd && docker run -it --net=host --gpus all --name voxblox_ros -v /home/ds1804/bags:/root/bags dschng/voxblox_ros 
 ```
