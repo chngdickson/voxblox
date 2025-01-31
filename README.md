@@ -4,13 +4,13 @@ Please check the origin one for official
 
 ## Option 1: build by yourself
 ```bash
-docker build -t chngdickson/voxblox_ros -f Dockerfile .
+docker build -t dschng/voxblox_ros -f Dockerfile .
 ```
 ## Option 2: pull directly
 建议内地同学直接pull 不然catkin build里有很多3dparty 可能没法clone下来
 
 ```bash
-docker pull chngdickson/voxblox_ros
+docker pull dschng/voxblox_ros
 ```
 
 # 2 Docker run File Structure and Containers 
