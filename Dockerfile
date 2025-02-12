@@ -1,6 +1,5 @@
 FROM osrf/ros:melodic-desktop-full
 LABEL maintainer="Zhuang Chi Sheng <chngdickson@gmail.com>"
-
 # Just in case we need it
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -19,6 +18,7 @@ RUN apt update && apt install -y python-wstool python-catkin-tools ros-melodic-c
 
 RUN mkdir -p /root/catkin_ws/src
 WORKDIR /root/catkin_ws
+# Added recently
 RUN catkin init
 RUN catkin config --extend /opt/ros/melodic
 RUN catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release
@@ -76,7 +76,14 @@ RUN catkin build --this
 WORKDIR /root/catkin_ws
 RUN catkin build
 
+
+# # 5) Build Pytorch
+# RUN apt-get install python3-rosdep python3-rosinstall-generator python3-vcstools python3-vcstool build-essential
+RUN apt-get install python-pip -y
+RUN pip install --upgrade pip
+RUN pip install torch==1.4.0 
+
 # 4) Source and set default workDir
 RUN echo "source /root/catkin_ws/devel/setup.bash" >> /etc/bash.bashrc
-WORKDIR /root/catkin_ws/src/
+WORKDIR /root/catkin_ws/
 ENTRYPOINT ["/bin/bash"]

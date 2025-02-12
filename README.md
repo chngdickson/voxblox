@@ -30,8 +30,23 @@ home/bags/
 - /home/ds1804/bags -> is the folder in my linux pc
 - c:\Users\swacker\MINT -> Folder in windows pc
 
+xhost command must be run for xcb to run
 ```bash
-cd && docker run -it --net=host --gpus all --name voxblox_ros -v /home/ds1804/bags:/root/bags dschng/voxblox_ros 
+xhost local:docker 
+
+cd && docker run -it \
+--net=host \
+--gpus all \
+--privileged \
+--volume /dev:/dev \
+--volume /tmp/.x11-unix:/tmp/.x11-unix \
+--volume ~/.ssh/ssh_auth_sock:/ssh-agent \
+--env SSH_AUTH_SOCK=/ssh-agent \
+--env DISPLAY=$DISPLAY \
+--env TERM=xterm-256color \
+--name voxblox_ros \
+-v /home/ds1804/bags:/root/bags dschng/voxblox_ros 
+
 ```
 For windows
 ```bash
@@ -49,9 +64,9 @@ roslaunch voxblox_ros cow_and_lady_dataset.launch
 
 ## 2. RUN OV2SLAM
 ```bash
-cd ~/catkin_ws/src/ov2slam && git pull
-cd ~/catkin_ws && catkin build ov2slam && source devel/setup.bash
-ros launch ov2slam ov2slam_node ~/catkin_ws/src/ov2slam/parameter_files/fast/euroc/euroc_stereo.yaml
+cd ~/catkin_ws/src/ov2slam && git pull && \
+cd ~/catkin_ws && catkin build ov2slam && source devel/setup.bash && roslaunch ov2slam carla.launch
+roslaunch ov2slam ov2slam_node ~/catkin_ws/src/ov2slam/parameter_files/fast/euroc/euroc_stereo.yaml
 ```
 ## 3. RUN Extra Docker terminal
 ```bash
