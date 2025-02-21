@@ -80,3 +80,11 @@ docker ps -a # show all envs that is alive
 docker rm voxblox_ros # Remove the env
 ```
 
+## Help
+```bash
+docker run \
+-v `pwd`/home/ds1804/Documents/dockers/PointCloud_Tree_Modelling/pctm:/usr/local/app/pctm \
+-v `pwd`/home/ds1804/bags:/usr/local/app/dataset \
+-it -p 8888:8888 treemodelling:latest
+```
+
