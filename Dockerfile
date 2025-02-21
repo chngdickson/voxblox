@@ -80,8 +80,10 @@ RUN catkin build
 # # 5) Build Pytorch
 # RUN apt-get install python3-rosdep python3-rosinstall-generator python3-vcstools python3-vcstool build-essential
 RUN apt-get install python3-pip -y
+RUN pip3 install --upgrade pip
 RUN python3 -m pip install --no-cache-dir torch==1.8.0+cu111 torchvision==0.9.0+cu111 torchaudio==0.8.0 -f https://download.pytorch.org/whl/torch_stable.html
-RUN python3 -m pip install --no-cache-dir open3d==0.10.0.0 simple-json pandas
+RUN python3 -m pip install --no-cache-dir open3d==0.10.0.0 
+RUN python3 -m pip install --no-cache-dir simplejson==3.17.5 pandas
 
 # 4) Source and set default workDir
 RUN echo "source /root/catkin_ws/devel/setup.bash" >> /etc/bash.bashrc
